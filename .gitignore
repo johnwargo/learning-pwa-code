@@ -1,0 +1,6 @@
+# Files
+_DS_Store
+
+# Folders
+.vscode/
+node_modules/

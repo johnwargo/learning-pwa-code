@@ -1,0 +1,216 @@
+* {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+body {
+    background-color: #eee;
+    margin-top: 40px;
+}
+h1 {
+    color: #999;
+    margin: 0.5rem 0 2rem 1rem;
+    font-weight: 200;
+}
+ul#browserRegistrations {
+    list-style-type: none;
+    margin: 1rem 0 0 0;
+    padding: 0;
+}
+#browserRegistrations .registration {
+    border: 1pt solid #ccc;
+    border-radius: 0.5rem;
+    padding: 0.75rem 120px 0 0.75rem;
+    margin-top: 0.5rem;
+    background-color: white;
+    position: relative;
+}
+#browserRegistrations .registration:hover {
+    background-color: #ddd;
+}
+div.editControls {
+    display:none;
+}
+input.browserNameField {
+    border: none;
+    font-weight: 600;
+    padding-right: 60px;
+    color: #003d99;
+}
+button.browserNameEditButton {
+    padding: 1px;
+    border: none;
+    background: transparent;
+    font-weight: 600;
+    min-width: 200px;
+    text-align: left;
+    color: #666;
+}
+button.browserSaveBtn,
+button.browserCancelBtn {
+    border: 1pt solid #eee;
+    background: transparent;
+    font-size: 1.2rem;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: 0;
+    left: -70px;
+}
+i.fa {
+    position: relative;
+    top: -1px;
+    left: -3px;
+    color: #ccc;
+}
+i.fa-check {
+    left: -5px;
+}
+.fa-check:hover {
+    color: green;
+}
+.fa-close:hover {
+    color: red;
+}
+a.browserDelete {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 23px;
+    right: 25px;
+    display:none;
+}
+#browserRegistrations .registration:hover a.browserDelete {
+    display: block;
+}
+a.browserDelete::before,
+a.browserDelete::after {
+    content: "";
+    display: block;
+    background: #ccc;
+    height: 2px;
+    width: 2rem;
+    border-radius: 4px;
+    font-weight: 200;
+}
+a.browserDelete::before {
+    transform: translateY(2px) rotate(45deg);
+}
+a.browserDelete::after {
+    transform: translateY(0) rotate(-45deg);
+}
+a.browserDelete:hover::before,
+a.browserDelete:hover::after {
+    background: #999;
+}
+a.browserDelete:active::before,
+a.browserDelete:active::after {
+    background: #444;
+}
+a.hideDialog {
+    display: block;
+    top: 4%;
+    right: 5%;
+}
+a.hideDialog::before,
+a.hideDialog::after {
+    background: #bbb;
+}
+button {
+    border-radius: 3px;
+    border: 1pt solid #bbb;
+    color: #eee;
+    background: #ccc;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
+button:hover {
+    background: #0066ff;
+    color: white;
+    border-color: #003d99;
+}
+button:active {
+    color: #999;
+    background: #003d99;
+}
+button.notifyButton {
+    position: absolute;
+    right: 20px;
+    bottom: 17px;
+    display:none;
+}
+#browserRegistrations .registration:hover button.notifyButton {
+    display: block;
+}
+div.resetOptions {
+    display:inline-block;
+    padding-right: 1.5rem;
+}
+div#buttonsArea {
+    float:right;
+    margin-top: 0.7rem;
+}
+select#resetOption {
+    height: 30px;
+}
+#logoIcon {
+    height: 60px;
+    float: left;
+    padding-right: 12px;
+}
+/*
+
+button#sendMessage {
+    right: 5%;
+    background: #bbb;
+}
+button#resetJSON {
+    right: calc(5% + 190px);
+    background: #bbb;
+}
+#resetOption {
+    position: absolute;
+    right: calc(5% + 290px);
+    bottom: 17px;
+    height: 30px;
+}
+*/
+#notifyDialog {
+    position: absolute;
+    width: 90vw;
+    height: 80vh;
+    left: 5vw;
+    top: 5vh;
+    background: #ddd;
+    border: 3pt solid #d9d9d9;
+    border-radius: 10px;
+    padding: 2vh 4vw;
+    display:none;
+}
+#messageJSON {
+    width: 100%;
+    height: calc(100% - 105px);
+    border-color: #bbb;
+    padding: 1rem 1.5rem;
+    font-family: monospace;
+}
+#notifyDialog h2 {
+    color: #888;
+    margin-top: 0rem;
+    font-weight: 200;
+    margin-bottom: 1.5rem;
+}
+
+@media(max-width: 1199px) {
+    
+}
+@media(max-width: 992px) {
+    
+}
+@media(max-width: 768px) {
+
+}
+@media(max-width: 660px) {
+
+}
+@media(max-width: 450px) {
+    
+}

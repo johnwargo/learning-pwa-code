@@ -1,0 +1,31 @@
+// Does the browser support service workers?
+if ('serviceWorker' in navigator) {
+    // then register our service worker
+    navigator.serviceWorker.register('/sw.js')
+        .then(reg => {
+            // display a success message
+            console.log(`Service Worker Registration (Scope: ${reg.scope})`);
+        })
+        .catch(error => {
+            // display an error message
+            let msg = `Service Worker Error (${error})`;
+            console.log(msg);
+            // display a warning dialog (using Sweet Alert 2)
+            Swal.fire({
+                type: 'error',
+                title: 'Registration Error',
+                text: msg
+            })
+            Swal.fire('Registration Error', msg, 'error');
+        });
+} else {
+    // happens when the app isn't served over a TLS connection (HTTPS)
+    // or if the browser doesn't support service workers
+    console.warn('Service Worker not available');
+    Swal.fire({
+        type: 'error',
+        title: 'Service Worker Registration',
+        text: 'Registration failed, the browser doesn\'t support service workers',
+        footer: 'Sorry, try again with a different browser'
+    });
+}
