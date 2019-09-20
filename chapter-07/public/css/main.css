@@ -303,17 +303,15 @@ button:active {
   color: #fff;
 }
 div#actionsContainer {
-  display:none;
-  position: absolute;
   padding: 20px;
   background: #fff;
   border: 10pt solid #e0e0e0;
   top: 23vh;
   right: 10vw;
-  width: 50vw;
   box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
   height: 435px;
   border-radius: 8px;
+  margin-top: 30px;
 }
 div#playback {
   margin-bottom: 30px;
@@ -328,4 +326,9 @@ input#playbackText {
   width: 60%;
   padding: 5px 8px;
   margin-left: 10px;
+}
+img#pageLogo {
+  height: 100px;
+  float: left;
+  margin: 0 20px 0 -20px;
 }

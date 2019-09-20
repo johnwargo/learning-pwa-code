@@ -81,12 +81,10 @@ function updateUI() {
             console.log('Browser is already subscribed');
             document.getElementById("subscribeDiv").style.display = 'none';
             document.getElementById("unsubscribeDiv").style.display = 'block';
-            document.getElementById("actionsContainer").style.display = 'block';
           } else {
             // no? Then unhide the subscribe div
             document.getElementById("subscribeDiv").style.display = 'block';
             document.getElementById("unsubscribeDiv").style.display = 'none';
-            document.getElementById("actionsContainer").style.display = 'none';
           }
         })
     });

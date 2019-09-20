@@ -35,7 +35,7 @@
 
   <!-- Add your site or application content here -->
   <div id="mainBody">
-    <img src="img/push-icon-transparent-orange.png">
+    <img id='pageLogo' src="img/push-icon-transparent-orange.png">
     <h1>Learning PWA: Push</h1>
     <p>This is a simple app that demonstrates many of the parts of the browser Push Notifications process.</p>
 
@@ -52,6 +52,24 @@
       <p>Click or tap the <strong>Unsubscribe</strong> button to unsubscribe this browser from notifications.</p>
       <button type="button" id="btnUnsubscribe">Unsubscribe</button>
     </div>
+
+    <!-- TODO: Remove this before publishing -->
+    <div id='actionsContainer'>
+      <div id='playback'>
+        <div>
+          <label for="playbackText">Playback Text</label>
+          <input id="playbackText" placeholder="Enter some text here"><br>
+          <button type="button" id="btnPlayback">Playback</button>
+        </div>
+      </div>
+
+      <!-- TODO: Remove this before publishing -->
+      <div id="longAction">
+        <button type="button" id="btnLongAction">Long Action</button>
+        <div id="longActionOutput"></div>
+      </div>
+    </div>
+
   </div>
 
   <!-- Scripts -->
@@ -68,8 +86,11 @@
   <script src='js/sw-reg.js'></script>
   <!-- Push configuration file -->
   <script src="js/config.js"></script>
+
+  <!-- TODO: put this back before you publish -->
   <!-- Load our page's JavaScript -->
-  <script src="js/index.js"></script>
+  <script src="js/index-72.js"></script>
+
 </body>
 
 </html>
