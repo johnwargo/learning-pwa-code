@@ -31,10 +31,9 @@ self.addEventListener('fetch', event => {
 self.addEventListener('push', event => {
   console.log('SW: Push event fired');
   console.dir(event);
+  // console.log(event.data.text());
   const data = event.data.json();
   console.dir(data);
-  console.dir(JSON.parse(data.actions));
-
   // We don't want the Service Worker killing us
   // notification before we're done displaying it,
   // so we put this in a waitUntil block
