@@ -1,5 +1,5 @@
 /*********************************************************
- * Listing 3.8
+ * Listing 3.7
  * 
  * This is a simple Service Worker that simply logs the 
  * request to the console, then returns a promise to 

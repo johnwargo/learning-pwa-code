@@ -1,10 +1,11 @@
 /*********************************************************
- * Listing 3.7
+ * Listing 3.8
  * 
  * This is a simple Service Worker that simply logs the 
  * request to the console, then returns a promise to 
- * fetch the requested file. It also forces the worker
- * to activate through the use of `skipWaiting()`
+ * fetch the requested file. It forces the worker
+ * to activate through the use of `skipWaiting()` and
+ * adds a call to `self.clients.claim()` to claim all tabs
  *********************************************************/
 
 self.addEventListener('install', event => {
