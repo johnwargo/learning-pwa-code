@@ -4,7 +4,6 @@
  * By John M. Wargo
  * December 1, 2018
  ***************************************/
-
 var createError = require('http-errors');
 var express = require('express');
 var helmet = require('helmet');
