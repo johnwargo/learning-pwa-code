@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 var app = require('../app');
-var debug = require('debug')('pwa-learn-push:server');
+var debug = require('debug')('learning-pwa-push:server');
 var http = require('http');
 
 /**

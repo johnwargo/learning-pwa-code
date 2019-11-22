@@ -44,7 +44,8 @@ function doSubscribe() {
           console.dir(event);
         }
 
-        // navigator.serviceWorker.ready.then((registration) => {
+        // TODO: Remove this when you publish
+        // navigator.serviceWorker.ready.then(registration => {
         //   registration.showNotification('I read Learning PWA, '
         //     + 'and all I got was this silly notification!');
         // });

@@ -139,17 +139,17 @@ function doSubscribe() {
                           timer: 2000
                         });
                       })
-                      .catch((error) => {
+                      .catch(error => {
                         console.error(error);
                       })
                   })
-                  .catch((error) => {
+                  .catch(error => {
                     // hmmm, that didn't work
                     console.error(error);
                     // Tell the user what we can
                     Swal.fire({
                       type: 'error',
-                      title: 'Subsribe Error',
+                      title: 'Subscribe Error',
                       text: error
                     });
                   });

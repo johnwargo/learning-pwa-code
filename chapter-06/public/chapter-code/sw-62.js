@@ -41,7 +41,7 @@ self.addEventListener('push', event => {
   );
 });
 
-self.addEventListener('notificationclick', function (event) {
+self.addEventListener('notificationclick', event => {
   console.log('SW: Notification clicked');
   console.dir(event);
   if (event.action === 'like' ) {
