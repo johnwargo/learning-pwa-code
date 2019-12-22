@@ -38,22 +38,21 @@
      */
     function renderSentimentData(chartData) {
         console.log('Rendering Sentiment data');
-        // Built from this sample: https://www.chartjs.org/samples/latest/charts/pie.html
+        // built from this sample: https://www.chartjs.org/samples/latest/charts/pie.html
         var ctx = document.getElementById('myChart').getContext('2d');
-        // Populate the attribData array with our sentiment data
+        // populate the attribData array with our sentiment data
         var attribData = [];
         var labelData = []
         for (var attribute in chartData) {
             let titleAttrib = toTitleCase(attribute);
             attribData.push(chartData[attribute]);
             labelData.push(titleAttrib);
-            // Update the table on the page
+            // update the table on the page
             document.getElementById(`val${titleAttrib}`).innerHTML = formatNumber(chartData[attribute]);
         }
 
         var data = {
             datasets: [{
-                // label: 'User Sentiment',
                 data: attribData,
                 backgroundColor: [
                     window.chartColors.red,
@@ -82,19 +81,19 @@
 
     function getSentimentData() {
         console.log('getSentimentData()');
-        // Do we have a network connection?
-        // Build the URL to the app's APIs
+        // do we have a network connection?
+        // build the URL to the app's APIs
         const serverUrl = `${location.origin}/api/sentiment`;
         console.log(`Getting data from ${serverUrl}`);
-        // See if you can get the data from the network
+        // see if you can get the data from the network
         fetch(serverUrl)
             .then(res => {
                 console.log('Received data from the server');
                 res.json()
                     .then(chartData => {
-                        // Update the page with the new data
+                        // update the page with the new data
                         renderSentimentData(chartData);
-                        // Set the data source element in the footer
+                        // set the data source element in the footer
                         document.getElementById('sourceValue').textContent = DATA_SOURCES[0];
                     })
             })
@@ -114,7 +113,7 @@
      */
     function postFeedback(selectedSentiment) {
         console.log('postFeedback()');
-        // Build the URL to the app's APIs
+        // build the URL to the app's APIs
         const serverUrl = `${location.origin}/api/sentiment`;
 
         console.log(`Submitting data to ${serverUrl}`);
@@ -131,10 +130,10 @@
                 if (response.status == 201) {
                     // it worked
                     console.log('Sentiment submitted');
-                    // Update the page with the latest data
+                    // update the page with the latest data
                     getSentimentData();
                 } else {
-                    // Tell the user it failed
+                    // tell the user it failed
                     Swal.fire('POST Error', response.statusText, 'error');
                 }
             });

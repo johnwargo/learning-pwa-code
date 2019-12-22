@@ -5,9 +5,9 @@ const STORE_NAME = 'feedback';
 
 function openIDB() {
   console.log('openIDB()');
-  // Open the indexedDB database used by the app
+  // open the indexedDB database used by the app
   return new Promise((resolve, reject) => {
-    // Open the feedback database
+    // open the feedback database
     let theDB = self.indexedDB.open(DB_NAME, DB_VERSION);
 
     // success callback
@@ -22,7 +22,7 @@ function openIDB() {
       let msg = `Database error ${theDB.error}`;
       console.error(`openIDB: ${msg}`);
       Swal.fire('Database Error', msg, 'error');
-      // Reject the promise, we failed
+      // reject the promise, we failed
       // include the error message with the failure
       reject(msg);
     };
@@ -33,9 +33,9 @@ function openIDB() {
       var db = event.target.result;
       // does the store already exist?
       if (!db.objectStoreNames.contains(STORE_NAME)) {
-        // No? Then create it
+        // no? Then create it
         console.log(`openIDB: Creating store ${STORE_NAME}`);
-        // First create the configuration options for the store
+        // first create the configuration options for the store
         var storeOptions = { keyPath: "idx", autoIncrement: true };
         // then create the store
         var theStore = db.createObjectStore(STORE_NAME, storeOptions);
@@ -59,7 +59,7 @@ function queueFeedback(db, feedback) {
         // to the service worker
         reg.sync.register('feedback')
           .then(() => {
-            // Tell the user
+            // tell the user
             Swal.fire({
               type: 'info',
               title: 'Request Queued',
@@ -79,7 +79,7 @@ function queueFeedback(db, feedback) {
     };
 
     request.onerror = function (event) {
-      // Unable to create transaction
+      // unable to create transaction
       reject(db.error);
     };
   });
@@ -92,25 +92,25 @@ function getFeedbackItems() {
   let items = [];
 
   return new Promise((resolve, reject) => {
-    // Yes, save the feedback to the database
+    // yes, save the feedback to the database
     openIDB()
       .then(db => {
         let request = db.transaction([STORE_NAME], "readonly")
           .objectStore(STORE_NAME)
           .openCursor();
 
-        // Success!
+        // success!
         request.onsuccess = function (event) {
           // get a handle to the cursor
           var cursor = event.target.result;
           // do we have a valid cursor?
           if (cursor) {
-            // Add the feedback item to the array
+            // add the feedback item to the array
             items.push(cursor.value);
-            // Move onto the next item in the object store
+            // move onto the next item in the object store
             cursor.continue();
           } else {
-            // No valid cursor, so must be at the end
+            // no valid cursor, so must be at the end
             resolve({ db: db, items: items });
           }
         };

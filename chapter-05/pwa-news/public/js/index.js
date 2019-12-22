@@ -4,7 +4,7 @@
     var lastUpdated;
 
     var updateAgo = function () {
-        // Updates the last Updated time with a timer value
+        // updates the last Updated time with a timer value
         document.getElementById('updatedAgo').textContent =
             `(${moment(lastUpdated).from(Date.now())})`;
     };
@@ -15,15 +15,15 @@
     function renderNewsData(theData) {
         console.log('Rendering News data');
         let outHTML;
-        // Do we have data to process?
+        // do we have data to process?
         if (theData.items.length > 0) {
-            // Yes! so start building our output HTML
+            // yes! so start building our output HTML
             outHTML = '<article><ul class="items news">';
             // iterate through the news items
             for (let idx in theData.items) {
-                // Get the current item
+                // get the current item
                 let item = theData.items[idx];
-                // Build an HTML LI for the item
+                // build an HTML LI for the item
                 outHTML += `<li class='newsItem'>`;
                 outHTML += `<div class='imgContainer'>`;
                 if (item.image) {
@@ -43,24 +43,24 @@
             outHTML = '<article><p class="noData">No data available, what\'s up with that?</p>';
         }
         outHTML += '</article>';
-        // Write the content to the page
+        // write the content to the page
         document.querySelector('#newsContent').innerHTML = outHTML;
 
-        // Store the last updated time in this global variable
+        // store the last updated time in this global variable
         // so the timer function has access to it later
         lastUpdated = theData.lastUpdated;
-        // Update the last updated area at the top
+        // update the last updated area at the top
         document.getElementById('lastUpdated').textContent = moment(lastUpdated).format("MMMM D, h:mm A");
-        // Update the `Ago` part of the last updated
+        // update the `Ago` part of the last updated
         updateAgo();
         // then set a timer to update the Ago part every second
         setInterval(updateAgo, 1000);
     }
 
     function setPresence(dataSource, dataState) {
-        // Set the data source element in the footer
+        // set the data source element in the footer
         document.getElementById('sourceValue').textContent = dataSource;
-        // Set the data state element in the footer 
+        // set the data state element in the footer 
         document.getElementById('dataStateValue').textContent = dataState;
     }
 
@@ -76,17 +76,17 @@
 
     function getNewsData() {
         console.log('getNewsData()');
-        // Build the URL to the app's APIs
+        // build the URL to the app's APIs
         const serverUrl = `${location.origin}/api/news`;
         // tell the developer what we're doing
         console.log(`Getting data from ${serverUrl}`);
-        // Update the page so the user knows
+        // update the page so the user knows
         document.getElementById('newsContent').innerHTML = 'Retrieving data...';
-        // Get the data from the network
+        // get the data from the network
         fetch(serverUrl)
             .then(res => {
                 console.log('Received response from the server');
-                // Did the request succeed?
+                // did the request succeed?
                 if (res.status !== 200) {
                     logError(`Unable to access server (error: ${res.status} - ${res.statusText})`, true);
                     // Exit
@@ -102,7 +102,7 @@
                             // newobject.status tells where the server process got the data
                             // fresh, cached, error
                             setPresence(DATA_SOURCES[0], DATA_STATES[newsObject.status - 1]);
-                            // Update the page with the new data
+                            // update the page with the new data
                             renderNewsData(newsObject);
                         } else {
                             // update the Source and data state values in the footer
@@ -123,7 +123,7 @@
             });
     }
 
-    // Set the data state footer value to UNKNOWN until we check for data
+    // set the data state footer value to UNKNOWN until we check for data
     // document.getElementById('dataStateValue').textContent = STATUS_UNKNOWN;
     // get the data for the page
     getNewsData();

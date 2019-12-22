@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/normalize.css">  
   <script>
     navigator.serviceWorker.register("./sw.js");
-    navigator.serviceWorker.ready.then((reg) => {
+    navigator.serviceWorker.ready.then(reg => {
       return reg.sync.register('testSync');
     });
   </script>
@@ -17,7 +17,8 @@
 <body>
   <h1>Background Sync Fallback Tester</h1>
   <p>This web page tests and validates the operation of the Service Worker Background Sync Exponential Backoff process.
-    Open the browser's developer tools to the console window and watch what happens.</p>
+    Open the browser's developer tools to the console window and watch what happens.
+  </p>
 </body>
 
 </html>

@@ -7,7 +7,7 @@ const CACHE_NAME = `${CACHE_ROOT}-v${SW_VERSION}`;
 // the server feedback API endpoint
 const FEEDBACK_URL = `${self.location.origin}/api/sentiment`;
 
-self.addEventListener('install', (event) => {
+self.addEventListener('install', event => {
   // fires when the browser installs the app
   // here we're just logging the event and the contents
   // of the object passed to the event. the purpose of this event
@@ -16,28 +16,28 @@ self.addEventListener('install', (event) => {
   console.log(`SW: Event fired: ${event.type}`);
   console.dir(event);
   self.importScripts('./js/db.js');
-  // Force service worker activation
+  // force service worker activation
   self.skipWaiting();
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', event => {
   // fires after the service worker completes its installation. 
   // It's a place for the service worker to clean up from previous 
   // service worker versions
   console.log(`SW: ${event.type} event fired`);
   // apply this service worker to all tabs running the app
   self.clients.claim();
-  // Clean up our previous caches
+  // clean up our previous caches
   event.waitUntil(
-    // Get the list of cache keys (cache names)
+    // get the list of cache keys (cache names)
     caches.keys().then(cacheList => {
       // don't stop until all complete
       return Promise.all(
-        cacheList.map((theCache) => {
+        cacheList.map(theCache => {
           // is the cache key different than the 
           // current cache name and has the same root?
           if ((CACHE_NAME !== theCache) && (theCache.startsWith(CACHE_ROOT))) {
-            // Yes? Then delete it. 
+            // yes? Then delete it. 
             console.log(`SW: deleting cache ${theCache}`);
             return caches.delete(theCache);
           }
@@ -47,23 +47,23 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-self.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', event => {
   console.log(`SW: ${event.type} ${event.request.url}`);
-  // Fires whenever the app requests a resource (file or data)
+  // fires whenever the app requests a resource (file or data)
   event.respondWith(
     // try to get the file from the network
     fetch(event.request)
       // whew, we got it
       .then(response => {
-        // Do we have a valid response?
+        // do we have a valid response?
         if (response && response.status == 200
           && response.type == 'basic') {
           // clone the response; it's a stream, so we can't
           // write it to the cache and return it as well
           let responseClone = response.clone();
-          // Try to open the cache
+          // try to open the cache
           caches.open(CACHE_NAME)
-            // If we successfully opened the cache
+            // if we successfully opened the cache
             .then(function (cache) {
               console.log(`SW: Adding ${event.request.url} to the cache`);
               // then write our cloned response to the cache
@@ -93,9 +93,9 @@ self.addEventListener('fetch', (event) => {
   );
 });
 
-self.addEventListener('sync', (event) => {
+self.addEventListener('sync', event => {
   console.log('SW: Sync event fired');
-  // Is this the last time the browser will 
+  // is this the last time the browser will 
   // process this event?
   if (event.lastChance) {
     console.warn(`SW: ${event.tag.toUpperCase()} sync last chance`);
@@ -106,7 +106,7 @@ self.addEventListener('sync', (event) => {
       getFeedbackItems()
         .then(data => {
           return Promise.all(
-            // Loop through the items array          
+            // loop through the items array          
             data.items.map(function (feedbackItem) {
               // update the server if you can            
               return fetch(FEEDBACK_URL, {
@@ -121,7 +121,7 @@ self.addEventListener('sync', (event) => {
                   // so whack the record at idx
                   return deleteFeedback(data.db, feedbackItem.idx)
                 })
-                .catch((error) => {
+                .catch(error => {
                   // ruh roh, something went wrong
                   console.error(`SW: Sync Error: ${error}`);
                   if (event.lastChance) {
@@ -134,7 +134,7 @@ self.addEventListener('sync', (event) => {
           );
         }));
   } else {
-    // This should never happen
+    // this should never happen
     console.log(`SW: Unrecognized sync event (${event.tag})`);
   }
 });

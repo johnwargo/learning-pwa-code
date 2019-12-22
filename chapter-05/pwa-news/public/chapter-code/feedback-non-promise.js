@@ -41,16 +41,16 @@
      */
     function renderSentimentData(chartData) {
         console.log('Rendering Sentiment data');
-        // Built from this sample: https://www.chartjs.org/samples/latest/charts/pie.html
+        // built from this sample: https://www.chartjs.org/samples/latest/charts/pie.html
         var ctx = document.getElementById('myChart').getContext('2d');
-        // Populate the attribData array with our sentiment data
+        // populate the attribData array with our sentiment data
         var attribData = [];
         var labelData = []
         for (var attribute in chartData) {
             let titleAttrib = toTitleCase(attribute);
             attribData.push(chartData[attribute]);
             labelData.push(titleAttrib);
-            // Update the table on the page
+            // update the table on the page
             document.getElementById(`val${titleAttrib}`).innerHTML = formatNumber(chartData[attribute]);
         }
 
@@ -81,19 +81,19 @@
 
     function getSentimentData() {
         console.log('getSentimentData()');
-        // Do we have a network connection?
-        // Build the URL to the app's APIs
+        // do we have a network connection?
+        // build the URL to the app's APIs
         const serverUrl = `${location.origin}/api/sentiment`;
         console.log(`Getting data from ${serverUrl}`);
-        // See if you can get the data from the network
+        // see if you can get the data from the network
         fetch(serverUrl)
             .then(res => {
                 console.log('Received data from the server');
                 res.json()
                     .then(chartData => {
-                        // Update the page with the new data
+                        // update the page with the new data
                         renderSentimentData(chartData);
-                        // Set the data source element in the footer
+                        // set the data source element in the footer
                         document.getElementById('sourceValue').textContent = DATA_SOURCES[0];
                     })
             })
@@ -113,18 +113,13 @@
      */
     function postFeedback(selectedSentiment) {
         console.log('postFeedback()');
-        // Build the URL to the app's APIs
+        // build the URL to the app's APIs
         const serverUrl = `${location.origin}/api/sentiment`;
 
         console.log(`Submitting data to ${serverUrl}`);
         // the data we're passing to the server
         const data = { sentiment: selectedSentiment };
-        // POST the data to the server
-        // method: 'POST', mode: 'cors', cache: 'no-cache',
-        // credentials: 'same-origin',
-        // headers: { 'Content-Type': 'application/json' },
-        // referrer: 'no-referrer', 
-        // body: JSON.stringify(data), 
+        // POST the data to the server       
         fetch(serverUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -135,10 +130,10 @@
                 if (response.status == 201) {
                     // it worked
                     console.log('Sentiment submitted');
-                    // Update the page with the latest data
+                    // update the page with the latest data
                     getSentimentData();
                 } else {
-                    // Tell the user it failed
+                    // tell the user it failed
                     Swal.fire('POST Error', response.statusText, 'error');
                 }
             });
@@ -150,7 +145,7 @@
      */
     function saveFeedback(selectedSentiment) {
         console.log('saveFeedback: Opening IndexedDB database');
-        // Open the feedback database
+        // open the feedback database
         var theDB = window.indexedDB.open(DB_NAME, DB_VERSION);
 
         // define the database error callback
@@ -166,7 +161,7 @@
             console.log('saveFeedback: Successfully opened database');
             // get a handle to the database
             var db = event.target.result;
-            // Now lets add the sentiment to the object store
+            // now lets add the sentiment to the object store
             var request = db.transaction([STORE_NAME], "readwrite")
                 .objectStore(STORE_NAME)
                 .add({ timestamp: Date.now(), sentiment: selectedSentiment });
@@ -191,9 +186,9 @@
             var db = event.target.result;
             // does the store already exist?
             if (!db.objectStoreNames.contains(STORE_NAME)) {
-                // No? Then create it
+                // no? Then create it
                 console.log(`saveFeedback: Creating store ${STORE_NAME}`);
-                // First create the configuration options for the store
+                // first create the configuration options for the store
                 var storeOptions = { keyPath: "idx", autoIncrement: true };
                 // then create the store
                 var theStore = db.createObjectStore(STORE_NAME, storeOptions);
@@ -212,10 +207,10 @@
             console.log(`submitFeedback: '${selectedSentiment}' selected`);
             // is IndexedDB supported?
             if ('serviceWorker' in navigator && 'SyncManager' in window) {
-                // Yes, save the feedback to the database
+                // yes, save the feedback to the database
                 saveFeedback(selectedSentiment);
             } else {
-                // Service worker or sync not supported
+                // service worker or sync not supported
                 // so do this the old fashioned way
                 postFeedback(selectedSentiment);
             }
@@ -225,7 +220,7 @@
     // set the onClick event for the `btnShare` button
     document.getElementById("btnShare").addEventListener("click", submitFeedback);
 
-    // Go get the data for the page
+    // go get the data for the page
     getSentimentData();
 
 })();
