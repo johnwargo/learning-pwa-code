@@ -100,7 +100,7 @@ router.get('/news', function (req: any, res: any, next: any) {
     if (_newsArray.length < 1 || Date.now() - cacheTime > CACHE_DURATION_MS) {
         // Call the Bing search API
         client.newsOperations.search('pwa', { count: 20 })
-            .then((result: any) => {
+            .then(result: any => {
                 // empty out the results array
                 let resArray: News[] = [];
                 // grab the value object
@@ -172,7 +172,7 @@ router.get('/news', function (req: any, res: any, next: any) {
                     items: resArray
                 });
             })
-            .catch((err: any) => {
+            .catch(err: any => {
                 console.log('Caught error');
                 console.error(err);
                 // do we have cached data?

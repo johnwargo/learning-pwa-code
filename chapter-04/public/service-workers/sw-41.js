@@ -16,19 +16,19 @@ var urlList = [
   '/js/utils.js',
 ];
 
-self.addEventListener('install', (event) => {
+self.addEventListener('install', event => {
   console.log(`SW: ${event.type} event fired`);
-  // The service worker is installing, so it's our chance
+  // the service worker is installing, so it's our chance
   // to setup the app. In this case, we're telling   
   // the browser to wait until we've populated the cache
   // before considering this service worker installed
   event.waitUntil(
     // create a local cache for our app resources
     caches.open('pwa-learn-cache')
-      // Once it's open...
+      // once it's open...
       .then(cache => {
         console.log('SW: Cache opened');
-        // Cache all of resources from the array
+        // cache all of resources from the array
         return cache.addAll(urlList);
       })
       .catch(error => {
@@ -37,16 +37,16 @@ self.addEventListener('install', (event) => {
   );
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', event => {
   // fires after the service worker completes its installation. 
-  // It's a place for the service worker to clean up from previous 
+  // it's a place for the service worker to clean up from previous 
   // service worker versions
   console.log(`SW: ${event.type} event fired`);
 });
 
-self.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', event => {
   console.log(`SW: ${event.type} ${event.request.url}`);
-  // Fires whenever the app requests a resource (file or data)
+  // fires whenever the app requests a resource (file or data)
   event.respondWith(
     // check to see if it's in the cache
     caches.match(event.request)

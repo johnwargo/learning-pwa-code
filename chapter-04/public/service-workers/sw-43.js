@@ -29,19 +29,19 @@ var urlList = [
   '/js/utils.js',
 ];
 
-self.addEventListener('install', (event) => {
+self.addEventListener('install', event => {
   console.log(`SW: ${event.type} event fired`);
-  // The service worker is installing, so it's our chance
+  // the service worker is installing, so it's our chance
   // to setup the app. In this case, we're telling   
   // the browser to wait until we've populated the cache
   // before considering this service worker installed
   event.waitUntil(
     // create a local cache for our app resources
     caches.open(CACHE_NAME)
-      // Once it's open...
+      // once it's open...
       .then(cache => {
         console.log('SW: Cache opened');
-        // Cache all of resources from the array
+        // cache all of resources from the array
         return cache.addAll(urlList);
       })
       .catch(error => {
@@ -50,22 +50,23 @@ self.addEventListener('install', (event) => {
   );
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', event => {
   // fires after the service worker completes its installation. 
-  // It's a place for the service worker to clean up from previous 
+  // it's a place for the service worker to clean up from previous 
   // service worker versions
   console.log(`SW: ${event.type} event fired`);
-  // Don't complete the activation until all the code runs
+  // don't complete the activation until all the code runs
   event.waitUntil(
-    // Get the list of cache keys (cache names)
+    // get the list of cache keys (cache names)
     caches.keys().then(cacheList => {
       // don't stop until all complete
       return Promise.all(
-        cacheList.map((theCache) => {
+        cacheList.map(theCache => {
           // is the cache key different than the 
           // current cache name and has the same root?
           if ((CACHE_NAME !== theCache) && (theCache.startsWith(CACHE_ROOT))) {
-            // Yes? Then delete it. 
+            // y
+            es? Then delete it. 
             console.log(`SW: deleting cache ${theCache}`);
             return caches.delete(theCache);
           }
@@ -75,7 +76,7 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-self.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', event => {
   console.log(`SW: ${event.type} ${event.request.url}`);
   // is the request for news data? 
   if (event.request.url == `${location.origin}/api/news`) {

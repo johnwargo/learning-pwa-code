@@ -32,9 +32,9 @@ var urlList = [
   OFFLINE_PAGE
 ];
 
-self.addEventListener('install', (event) => {
+self.addEventListener('install', event => {
   console.log(`SW: ${event.type} event fired`);
-  // The service worker is installing, so it's our chance
+  // the service worker is installing, so it's our chance
   // to setup the app. In this case, we're telling   
   // the browser to wait until we've populated the cache
   // before considering this service worker installed
@@ -53,22 +53,22 @@ self.addEventListener('install', (event) => {
   );
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', event => {
   // fires after the service worker completes its installation. 
-  // It's a place for the service worker to clean up from previous 
+  // it's a place for the service worker to clean up from previous 
   // service worker versions
   console.log(`SW: ${event.type} event fired`);
-  // Don't complete the activation until all the code runs
+  // don't complete the activation until all the code runs
   event.waitUntil(
-    // Get the list of cache keys (cache names)
+    // get the list of cache keys (cache names)
     caches.keys().then(cacheList => {
       // don't stop until all complete
       return Promise.all(
-        cacheList.map((theCache) => {
+        cacheList.map(theCache => {
           // is the cache key different than the 
           // current cache name and has the same root?
           if ((CACHE_NAME !== theCache) && (theCache.startsWith(CACHE_ROOT))) {
-            // Yes? Then delete it. 
+            // yes? Then delete it. 
             console.log(`SW: deleting cache ${theCache}`);
             return caches.delete(theCache);
           }
@@ -78,7 +78,7 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-self.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', event => {
   console.log(`SW: ${event.type} ${event.request.url}`);
   // is the request for news data? 
   if (event.request.url == `${location.origin}/api/news`) {
