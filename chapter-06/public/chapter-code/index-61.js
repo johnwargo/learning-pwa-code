@@ -83,5 +83,5 @@ function doUnsubscribe() {
 document.getElementById("btnSubscribe").addEventListener("click", doSubscribe);
 document.getElementById("btnUnsubscribe").addEventListener("click", doUnsubscribe);
 
-// Update the UI based on current subscription status
+// update the UI based on current subscription status
 updateUI();

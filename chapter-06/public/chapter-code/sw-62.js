@@ -6,7 +6,7 @@ self.addEventListener('install', event => {
   // environment after the installation completes.
   console.log(`SW: Event fired: ${event.type}`);
   console.dir(event);
-  // Force service worker activation
+  // force service worker activation
   self.skipWaiting();
 });
 
@@ -21,9 +21,9 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  // Fires whenever the app requests a resource (file or data)
+  // fires whenever the app requests a resource (file or data)
   console.log(`SW: Fetching ${event.request.url}`);
-  // Next, go get the requested resource from the network, 
+  // next, go get the requested resource from the network, 
   // nothing fancy going on here.
   event.respondWith(fetch(event.request));
 });
@@ -33,7 +33,7 @@ self.addEventListener('push', event => {
   console.dir(event);
   const data = event.data.json();
   console.dir(data);    
-  // We don't want the Service Worker killing us
+  // we don't want the Service Worker killing us
   // notification before we're done displaying it,
   // so we put this in a waitUntil block
   event.waitUntil(
@@ -46,12 +46,12 @@ self.addEventListener('notificationclick', event => {
   console.dir(event);
   if (event.action === 'like' ) {
     event.waitUntil(
-      // Do something for the like action
+      // do something for the like action
 
     );
   } else {
     event.waitUntil(
-      // Do something for the dislike action
+      // do something for the dislike action
 
     );
   }  

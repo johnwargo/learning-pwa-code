@@ -22,8 +22,8 @@
     <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href='css/admin.css'>
     <title>PWA Push Admin</title>
@@ -36,23 +36,6 @@
                 <img id='logoIcon' src='../img/push-icon-transparent-red.png'>
                 <h1>Push Administration</h1>
                 <ul id='browserRegistrations'>
-                    <!-- <li class='registration'>
-                        <h4>
-                            <button onclick='editTitle(1)' id='editButton1'
-                                class='browserNameEditButton'>Chrome</button>
-                            <div id='nameEditControls1' class='editControls'>
-                                <input class='browserNameField' id='registration1' name='registration1' value='Chrome'>
-                                <button class='browserSaveBtn' onclick='saveTitleEdit(1)'>
-                                    <i class="fa fa-check"></i></button>
-                                <button class='browserCancelBtn' onclick='cancelTitleEdit(1)'>
-                                    <i class="fa fa-close"></i></button>
-                            </div>
-                        </h4>
-                        <a href='#' class='browserDelete' onclick='removeBrowser(1)'></a>
-                        <p>Some addl information about the registration, which might be overly long but sometimes long
-                            is OK if you're that kind of person. Know what I mean?</p>
-                        <button id='notifyBtn1' class='notifyButton' onclick='showNotifyDialog(1)'>Notify</button>
-                    </li> -->
                 </ul>
             </div>
         </div>
@@ -67,15 +50,13 @@
                     <option id="simple">Simple</option>
                     <option id="standard">Standard</option>
                     <option id="advanced">Advanced</option>
-                </select>          
+                </select>
                 <button id='resetJSON' onclick='resetJSON()'>Reset</button>
             </div>
             <button id="sendMessage" onclick='sendMessage()'>Send Message</button>
         </div>
     </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -85,7 +66,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <!-- Load the Sweet Alerts module -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="js/admin.js"></script>
     <script src='https://use.fontawesome.com/c7847d4a84.js'></script>

@@ -35,26 +35,6 @@ const sendContent = [
     }
 ];
 
-// {
-//     "title": "This is the title",
-//     "body": "This is the message",
-//     "icon": "/img/push-icon-transparent-green.png",
-//     "image":"https://picsum.photos/300/100",
-//     "badge": "",
-//     "vibrate": "",
-//     "sound": "",
-//     "dir": "auto",
-//     "tag": "PushAdmin",
-//     "data": {},
-//     "requireInteraction": "true",
-//     "renotify": "false",
-//     "silent": "false",
-//     "actions" : [
-//         { "action": "like", "title": "Like" },
-//         { "action": "reply", "title": "Reply" }
-//     ]
-// }
-
 function updateBrowserData() {
     console.log('updateBrowserData()');
     const serverUrl = `${location.origin}/api/subscriptions`;
@@ -66,7 +46,7 @@ function updateBrowserData() {
                     if (data) {
                         // get rid of any existing list items
                         $("#browserRegistrations").empty();
-                        // Now look through the data array
+                        // now look through the data array
                         data.forEach((item) => {
                             let idx = item.idx;
                             let listItem = '<li class="registration"><h4>';
@@ -207,7 +187,6 @@ function hideNotifyDialog() {
 
 function resetJSON() {
     console.log('resetJSON()');
-    // var id = $("#resetOption").find('option:selected').attr('id');
     var idx = $("#resetOption").prop('selectedIndex');
     $('#messageJSON').val(JSON.stringify(sendContent[idx], null, '\t'));
 }
@@ -216,16 +195,13 @@ function sendMessage() {
     console.log('sendMessage(' + currentBrowser + ')');
     const serverUrl = `${location.origin}/api/send/${currentBrowser}`;
 
-    // let sendIt = confirm(`Send notification message to ${$('#registration' + currentBrowser).val()}?`);
     let msg = `Send notification message to ${$('#registration' + currentBrowser).val()}?`;
-
     // get the content from the page
     let message = $("#messageJSON").val();
     // Can you convert it to JSON?
     if (!message) {
         Swal.fire('Error', 'Invalid message content (JSON), please try again', 'error');
     }
-
 
     Swal.fire({
         title: 'Send Notification',
@@ -239,7 +215,7 @@ function sendMessage() {
         if (result.value) {
             // close the dialog, it worked
             hideNotifyDialog();
-            // sendthe message to the server
+            // send the message to the server
             fetch(serverUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -249,9 +225,9 @@ function sendMessage() {
                     console.log(`sendMessage: ${response.status} response`);
                     response.json()
                         .then(data => {
-                            // What response did we get?
+                            // what response did we get?
                             if (response.status == 200) {
-                                // Woohoo, it worked!
+                                // woohoo, it worked!
                                 Swal.fire({
                                     type: 'success',
                                     title: 'Notification Sent',
@@ -283,10 +259,8 @@ function sendMessage() {
 
 $(document).ready(function () {
     console.log("ready!");
-    // Set the default content for the send page
-    // $('#messageJSON').val(JSON.stringify(sendContent[0], null, '\t'));
+    // set the default content for the send page    
     var idx = $("#resetOption").prop('selectedIndex');
     $('#messageJSON').val(JSON.stringify(sendContent[idx], null, '\t'));
-    // Update the page to list all registered browsers
     updateBrowserData();
 });

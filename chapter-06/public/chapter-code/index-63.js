@@ -27,7 +27,7 @@ function postRegistration(subscription) {
 
   return new Promise((resolve, reject) => {
     if (subscription) {
-      // Build the URL to the app's APIs
+      // build the URL to the app's APIs
       console.log(`Submitting subscription to ${serverUrl}`);
 
       // the data we're passing to the server
@@ -58,7 +58,7 @@ function postRegistration(subscription) {
                 resolve();
               })
           } else {
-            // Tell the user it failed
+            // tell the user it failed
             Swal.fire('POST Error', response.statusText, 'error');
             reject(response.statusText);
           }
@@ -82,14 +82,14 @@ function updateUI() {
             document.getElementById("subscribeDiv").style.display = 'none';
             document.getElementById("unsubscribeDiv").style.display = 'block';
           } else {
-            // no? Then unhide the subscribe div
+            // no? then unhide the subscribe div
             document.getElementById("subscribeDiv").style.display = 'block';
             document.getElementById("unsubscribeDiv").style.display = 'none';
           }
         })
     });
   } else {
-    // no? Then display a warning
+    // no? then display a warning
     document.getElementById("noNotificationsWarning").style.display = 'block';
   }
 }
@@ -146,7 +146,7 @@ function doSubscribe() {
                   .catch(error => {
                     // hmmm, that didn't work
                     console.error(error);
-                    // Tell the user what we can
+                    // tell the user what we can
                     Swal.fire({
                       type: 'error',
                       title: 'Subscribe Error',

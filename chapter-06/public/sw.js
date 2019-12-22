@@ -6,13 +6,13 @@ self.addEventListener('install', event => {
     // environment after the installation completes.
     console.log(`SW: Event fired: ${event.type}`);
     console.dir(event);
-    // Force service worker activation
+    // force service worker activation
     self.skipWaiting();
 });
 
 self.addEventListener('activate', event => {
     // fires after the service worker completes its installation. 
-    // It's a place for the service worker to clean up from previous 
+    // it's a place for the service worker to clean up from previous 
     // service worker versions
     console.log(`SW: Event fired: ${event.type}`);
     console.dir(event);
@@ -21,9 +21,9 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-    // Fires whenever the app requests a resource (file or data)
+    // fires whenever the app requests a resource (file or data)
     console.log(`SW: Fetching ${event.request.url}`);
-    // Next, go get the requested resource from the network, 
+    // next, go get the requested resource from the network, 
     // nothing fancy going on here.
     event.respondWith(fetch(event.request));
 });
