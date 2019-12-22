@@ -43,13 +43,7 @@ function doSubscribe() {
           console.log('Notification shown');
           console.dir(event);
         }
-
-        // TODO: Remove this when you publish
-        // navigator.serviceWorker.ready.then(registration => {
-        //   registration.showNotification('I read Learning PWA, '
-        //     + 'and all I got was this silly notification!');
-        // });
-
+        
         break;
       case 'denied':
         // code block
