@@ -42,7 +42,7 @@ self.addEventListener('push', event => {
   );
 });
 
-self.addEventListener('notificationclick', function (event) {
+self.addEventListener('notificationclick', event => {
   console.log('SW: Notification clicked');
   console.dir(event);
   if (event.action === 'like') {
@@ -71,14 +71,14 @@ self.addEventListener("pushsubscriptionchange", event => {
         // just like we did in index.js
 
       })
-      .catch((error) => {
+      .catch(error => {
         // hmmm, that didn't work
         console.error(error);
       })
   );
 });
 
-self.addEventListener('message', function (event) {
+self.addEventListener('message', event => {
   console.log('SW: Message event fired');
   console.dir(event);
   // do we have an 'action' message?

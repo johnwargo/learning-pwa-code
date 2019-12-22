@@ -13,26 +13,26 @@ import { Browser } from '../interfaces';
 
 const STORAGE_KEY: string = 'browsers';
 
-// Initialize the storage module
+// initialize the storage module
 storage.init({ dir: './subscriptions' }).then(() => {
   console.log('Storage initialized');
   storage.getItem(STORAGE_KEY)
-    .then((theResult: any) => {
+    .then(theResult: any => {
       // show how many records we have
       let browsers = theResult ? theResult : [];
       console.log(`Store contains ${browsers.length} records`);
     })
 });
 
-// Initialize the Web Push Module
+// initialize the Web Push Module
 // borrowed from https://www.npmjs.com/package/web-push
 if (Config.GCMAPI_KEY) {
-  // If we have a GCM key, use it
+  // if we have a GCM key, use it
   webpush.setGCMAPIKey(Config.GCMAPI_KEY);
-  /* In an early implementation of Push (in 2014)
+  /* in an early implementation of Push (in 2014)
      Google used Google Cloud Messaging (GCM)
      before any standards were in place. So
-     If you're supporting users running 
+     if you're supporting users running 
      really old browsers, then you'll want to 
      populate this value in the config file */
 }
@@ -43,13 +43,13 @@ webpush.setVapidDetails(
 );
 
 function generateIdx(browsers: any[]): number {
-  // Return the next idx value    
+  // return the next idx value    
   // assumes the array is sorted by idx
   const len = browsers.length;
   if (len < 1) {
     return 1;
   } else {
-    // Grab the last idx and increment it by 1
+    // grab the last idx and increment it by 1
     let lastItem = browsers[len - 1].idx;
     if (lastItem) {
       return lastItem + 1;
@@ -60,7 +60,7 @@ function generateIdx(browsers: any[]): number {
 }
 
 router.post('/send/:idx', function (req: any, res: any, next: any) {
-  // Send a notification message
+  // send a notification message
   console.log('Router: POST /send');
   const pushBody = JSON.stringify(req.body);
   // convert the parameter to a number
@@ -71,7 +71,7 @@ router.post('/send/:idx', function (req: any, res: any, next: any) {
     console.log(`Payload: ${pushBody}`);
 
     storage.getItem(STORAGE_KEY)
-      .then((theResult: any) => {
+      .then(theResult: any => {
         let browsers = theResult ? theResult : [];
         // get the item from the array at idx
         let index = browsers.findIndex(function (subscription: any) {
@@ -82,19 +82,19 @@ router.post('/send/:idx', function (req: any, res: any, next: any) {
           // get the subscriber
           let browser = browsers[index];
           webpush.sendNotification(browser.subscription, pushBody, {})
-            .then((result: any) => {
+            .then(result: any => {
               console.log('Notification sent successfully');
               res.json(result);
             })
-            .catch((result: any) => {
+            .catch(result: any => {
               console.log('Notification failure');
               console.log(result);
-              // Does the response have an error code?
+              // does the response have an error code?
               if (result.statusCode) {
-                // Then return it to the calling application
+                // then return it to the calling application
                 res.status(result.statusCode).send({ msg: result.body });
               } else {
-                // Otherwise who knows?
+                // otherwise who knows?
                 res.status(500).send(result);
               }
             })
@@ -103,7 +103,7 @@ router.post('/send/:idx', function (req: any, res: any, next: any) {
           res.sendStatus(404);
         }
       })
-      .catch((error: any) => {
+      .catch(error: any => {
         console.log(error);
         res.sendStatus(500);
       })
@@ -113,11 +113,11 @@ router.post('/send/:idx', function (req: any, res: any, next: any) {
 });
 
 router.post('/subscribe', function (req: any, res: any, next: any) {
-  // Register a subscription
+  // register a subscription
   console.log('Router: POST /subscription');
   // get the current subscriptions list from the store    
   storage.getItem(STORAGE_KEY)
-    .then((theResult: any[]) => {
+    .then(theResult: any[] => {
       // get the subscriptions array
       let browsers = theResult ? theResult : [];
       let idx = generateIdx(browsers);
@@ -126,7 +126,6 @@ router.post('/subscribe', function (req: any, res: any, next: any) {
       let data = req.body;
       let browser: Browser = {
         idx: idx,
-        // name: `Subscription #${idx}`,
         uuid: uuid,
         name: data.name,
         subscription: data.subscription,
@@ -145,19 +144,19 @@ router.post('/subscribe', function (req: any, res: any, next: any) {
           // res.sendStatus(201);
           res.status(201).send({ uuid: uuid });
         })
-        .catch((error: any) => {
+        .catch(error: any => {
           console.log(error);
           res.sendStatus(500);
         })
     })
-    .catch((error: any) => {
+    .catch(error: any => {
       console.log(error);
       res.sendStatus(500);
     })
 });
 
 router.get('/subscription/:idx', function (req: any, res: any, next: any) {
-  // Get details for a specific subscription
+  // get details for a specific subscription
   console.log('Router: GET /subscription');
   // convert the parameter to a number
   let idx = parseInt(req.params.idx, 10);
@@ -186,7 +185,7 @@ router.get('/subscription/:idx', function (req: any, res: any, next: any) {
 });
 
 router.delete('/subscription/:idx', function (req: any, res: any, next: any) {
-  // Delete a specific subscription
+  // delete a specific subscription
   console.log('Router: DELETE /subscription');
   // convert the parameter to a number
   let idx = parseInt(req.params.idx, 10);
