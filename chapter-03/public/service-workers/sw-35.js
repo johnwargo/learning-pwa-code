@@ -7,9 +7,9 @@
  *********************************************************/
 
 self.addEventListener('fetch', event => {
-    // Fires whenever the app requests a resource (file or data)
+    // fires whenever the app requests a resource (file or data)
     console.log(`SW: Fetching ${event.request.url}`);
-    // Next, go get the requested resource from the network, 
+    // next, go get the requested resource from the network, 
     // nothing fancy going on here.
     event.respondWith(fetch(event.request));
 });

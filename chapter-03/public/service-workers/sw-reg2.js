@@ -1,15 +1,15 @@
-// Define a variable to hold a reference to the 
-//registration object (reg)
+// define a variable to hold a reference to the 
+// registration object (reg)
 var regObject;
 
-// Does the browser support service workers?
+// does the browser support service workers?
 if ('serviceWorker' in navigator) {
     // then register our service worker
     navigator.serviceWorker.register('/sw-36.js')
         .then(reg => {
             // display a success message
             console.log(`Service Worker Registration (Scope: ${reg.scope})`);
-            // Store the `reg` object away for later use
+            // store the `reg` object away for later use
             regObject = reg;
             // setup the interval timer            
             setTimeout(requestUpgrade, 5000);
@@ -25,7 +25,7 @@ if ('serviceWorker' in navigator) {
     // happens when the app isn't served over a TLS connection (HTTPS)
     // or if the browser doesn't support service workers
     console.warn('Service Worker not available');
-    // We're not going to use an alert dialog here 
+    // we're not going to use an alert dialog here 
     // because if it doesn't work, it doesn't work;
     // this doesn't change the behavior of the app 
     // for the user
