@@ -32,11 +32,11 @@
   <link rel="stylesheet" href="css/main.css">
 
   <script>
-    // Does the browser support service workers?
+    // does the browser support service workers?
     if ('serviceWorker' in navigator) {
-      // Fires when the service worker is reacdy
-      navigator.serviceWorker.ready.then((reg) => {
-        // We have an active service worker working for us
+      // fires when the service worker is reacdy
+      navigator.serviceWorker.ready.then(reg => {
+        // we have an active service worker working for us
         console.log(`Service Worker ready (Scope: ${reg.scope})`);
         // do something interesting, if you want...
 
