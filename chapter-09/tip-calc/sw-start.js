@@ -1,17 +1,17 @@
 /***************************************************************************
- Hey, I thought we agreed that we weren't going to dig into Service Workers 
+ hey, I thought we agreed that we weren't going to dig into Service Workers 
  in this chapter, what gives?  OK, I'll explain the contents of this file 
  below, but you can also find more information in the following chapters 
  (where I cover Service Workers) or here: 
  https://developers.google.com/web/ilt/pwa/introduction-to-service-worker
 
- Since this is a service worker for an app I'm using to just illustrate 
+ dince this is a service worker for an app I'm using to just illustrate 
  how to how to use an web manifest file to install it, it doesn't actually
- do anything. All it does is register event listeners for the Service 
+ do anything. all it does is register event listeners for the Service 
  Worker events then, in those event listeners, it dumps the event object
- to the console. That's really it.
+ to the console. that's really it.
 
- In the chapters that follow, I'll show how to do file caching, deal with 
+ in the chapters that follow, I'll show how to do file caching, deal with 
  service worker upgrades, and other cool stuff. 
 ***************************************************************************/
 
