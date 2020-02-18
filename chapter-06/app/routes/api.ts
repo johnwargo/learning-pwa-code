@@ -17,7 +17,7 @@ const STORAGE_KEY: string = 'browsers';
 storage.init({ dir: './subscriptions' }).then(() => {
   console.log('Storage initialized');
   storage.getItem(STORAGE_KEY)
-    .then(theResult: any => {
+    .then((theResult: any) => {
       // show how many records we have
       let browsers = theResult ? theResult : [];
       console.log(`Store contains ${browsers.length} records`);
@@ -71,7 +71,7 @@ router.post('/send/:idx', function (req: any, res: any, next: any) {
     console.log(`Payload: ${pushBody}`);
 
     storage.getItem(STORAGE_KEY)
-      .then(theResult: any => {
+      .then((theResult: any) => {
         let browsers = theResult ? theResult : [];
         // get the item from the array at idx
         let index = browsers.findIndex(function (subscription: any) {
@@ -82,11 +82,11 @@ router.post('/send/:idx', function (req: any, res: any, next: any) {
           // get the subscriber
           let browser = browsers[index];
           webpush.sendNotification(browser.subscription, pushBody, {})
-            .then(result: any => {
+            .then((result: any) => {
               console.log('Notification sent successfully');
               res.json(result);
             })
-            .catch(result: any => {
+            .catch((result: any) => {
               console.log('Notification failure');
               console.log(result);
               // Does the response have an error code?
@@ -103,7 +103,7 @@ router.post('/send/:idx', function (req: any, res: any, next: any) {
           res.sendStatus(404);
         }
       })
-      .catch(error: any => {
+      .catch((error: any) => {
         console.log(error);
         res.sendStatus(500);
       })
@@ -117,7 +117,7 @@ router.post('/subscribe', function (req: any, res: any, next: any) {
   console.log('Router: POST /subscription');
   // get the current subscriptions list from the store    
   storage.getItem(STORAGE_KEY)
-    .then(theResult: any[] => {
+    .then((theResult: any[]) => {
       // get the subscriptions array
       let browsers = theResult ? theResult : [];
       let idx = generateIdx(browsers);
@@ -145,12 +145,12 @@ router.post('/subscribe', function (req: any, res: any, next: any) {
           // res.sendStatus(201);
           res.status(201).send({ uuid: uuid });
         })
-        .catch(error: any => {
+        .catch((error: any) => {
           console.log(error);
           res.sendStatus(500);
         })
     })
-    .catch(error: any => {
+    .catch((error: any) => {
       console.log(error);
       res.sendStatus(500);
     })
@@ -164,7 +164,7 @@ router.get('/subscription/:idx', function (req: any, res: any, next: any) {
   // do we have a number in idx?
   if (idx) {
     storage.getItem(STORAGE_KEY)
-      .then(theResult: any => {
+      .then((theResult: any) => {
         let browsers = theResult ? theResult : [];
         // get the item from the array at idx
         let browser = browsers.find(function (subscription: any) {
@@ -176,7 +176,7 @@ router.get('/subscription/:idx', function (req: any, res: any, next: any) {
           res.sendStatus(404);
         }
       })
-      .catch(error: any => {
+      .catch((error: any) => {
         console.log(error);
         res.sendStatus(500);
       })
@@ -194,7 +194,7 @@ router.delete('/subscription/:idx', function (req: any, res: any, next: any) {
   // do we have a number in idx?
   if (idx) {
     storage.getItem(STORAGE_KEY)
-      .then(theResult: any => {
+      .then((theResult: any) => {
         let browsers = theResult ? theResult : [];
         // get the item from the array at idx
         let index = browsers.findIndex(function (browser: any) {
@@ -209,7 +209,7 @@ router.delete('/subscription/:idx', function (req: any, res: any, next: any) {
             .then(() => {
               res.sendStatus(200);
             })
-            .catch(error: any => {
+            .catch((error: any) => {
               console.log(error);
               res.sendStatus(500);
             })
@@ -217,7 +217,7 @@ router.delete('/subscription/:idx', function (req: any, res: any, next: any) {
           res.sendStatus(404);
         }
       })
-      .catch(error: any => {
+      .catch((error: any) => {
         console.log(error);
         res.sendStatus(500);
       })
@@ -237,7 +237,7 @@ router.put('/subscription/:idx', function (req: any, res: any, next: any) {
     console.log(`Updating Name at ${idx} to ${name}`);
     // get the subscriptions list
     storage.getItem(STORAGE_KEY)
-      .then(theResult: any => {
+      .then((theResult: any) => {
         let browsers = theResult ? theResult : [];
         // find the array index for idx
         let index = browsers.findIndex(function (browser: any) {
@@ -253,7 +253,7 @@ router.put('/subscription/:idx', function (req: any, res: any, next: any) {
             .then(() => {
               res.sendStatus(200);
             })
-            .catch(error: any => {
+            .catch((error: any) => {
               console.log(error);
               res.sendStatus(500);
             })
@@ -261,7 +261,7 @@ router.put('/subscription/:idx', function (req: any, res: any, next: any) {
           res.sendStatus(404);
         }
       })
-      .catch(error: any => {
+      .catch((error: any) => {
         console.log(error);
         res.sendStatus(500);
       })
@@ -274,10 +274,10 @@ router.put('/subscription/:idx', function (req: any, res: any, next: any) {
 router.get('/subscriptions', function (req: any, res: any, next: any) {
   console.log('Router: GET /subscriptions');
   storage.getItem(STORAGE_KEY)
-    .then(theResult: any => {
+    .then((theResult: any) => {
       res.json(theResult ? theResult : []);
     })
-    .catch(error: any => {
+    .catch((error: any) => {
       console.log(error);
       res.sendStatus(404);
     })
@@ -292,7 +292,7 @@ router.post('/unsubscribe/:uuid', function (req: any, res: any, next: any) {
     // yes? get started
     console.log(`Unsubscribing UUID: ${uuid}`);
     storage.getItem(STORAGE_KEY)
-      .then(theResult: any => {
+      .then((theResult: any) => {
         let browsers = theResult ? theResult : [];
         // get the item from the array at idx
         let index = browsers.findIndex(function (browser: any) {
@@ -307,7 +307,7 @@ router.post('/unsubscribe/:uuid', function (req: any, res: any, next: any) {
             .then(() => {
               res.sendStatus(200);
             })
-            .catch(error: any => {
+            .catch((error: any) => {
               console.log(error);
               res.sendStatus(500);
             })
@@ -315,7 +315,7 @@ router.post('/unsubscribe/:uuid', function (req: any, res: any, next: any) {
           res.sendStatus(404);
         }
       })
-      .catch(error: any => {
+      .catch((error: any) => {
         console.log(error);
         res.sendStatus(500);
       })
