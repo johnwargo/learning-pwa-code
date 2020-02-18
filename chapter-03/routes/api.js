@@ -68,6 +68,7 @@ function clone(obj) {
         copy = {};
         for (var attr in obj) {
             if (obj.hasOwnProperty(attr)) {
+                // @ts-ignore
                 copy[attr] = clone(obj[attr]);
             }
         }
@@ -224,6 +225,8 @@ router.post('/sentiment', function (req, res, next) {
     if (_validSentiment.includes(sentiment)) {
         // Then increment the provided sentiment
         console.log("Incrementing " + sentiment);
+        // The following code works, but the TypeScript compiler doesn't like it
+        // @ts-ignore
         _userSentiment[sentiment] = _userSentiment[sentiment] + 1;
         res.sendStatus(201);
     }
