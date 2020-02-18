@@ -4,7 +4,7 @@ var router = express.Router();
 import { Image, News, Provider, UserSentiment } from '../interfaces';
 import { StatusCode } from '../enums';
 import { Config } from '../config';
-
+    
 // Constants
 // specifies how frequently the app will reach out to Bing for news
 // Setting this at 15 minutes guarantees the app will never exceed the limits
@@ -76,6 +76,7 @@ function clone(obj: any): any {
         copy = {};
         for (let attr in obj) {
             if (obj.hasOwnProperty(attr)) {
+                // @ts-ignore
                 copy[attr] = clone(obj[attr]);
             }
         }
@@ -87,20 +88,20 @@ function clone(obj: any): any {
 router.get('/news', function (req: any, res: any, next: any) {
     console.log('Router: GET /api/news');
 
-    // Set the result header
-    res.set('Cache-Control', 'max-age=5');
-
     // our local results array
     var resArray: News[] = [];
     var lastUpdated: number = Date.now();
     var statusCode: StatusCode;
+
+    // Set the result header
+    res.set('Cache-Control', 'max-age=5');
 
     // Check for news articles if we have no cached data or if it's been more
     // than CACHE_DURATION since we last checked
     if (_newsArray.length < 1 || Date.now() - cacheTime > CACHE_DURATION_MS) {
         // Call the Bing search API
         client.newsOperations.search('pwa', { count: 20 })
-            .then(result: any => {
+            .then((result: any) => {
                 // empty out the results array
                 let resArray: News[] = [];
                 // grab the value object
@@ -172,7 +173,7 @@ router.get('/news', function (req: any, res: any, next: any) {
                     items: resArray
                 });
             })
-            .catch(err: any => {
+            .catch((err: any) => {
                 console.log('Caught error');
                 console.error(err);
                 // do we have cached data?
@@ -236,6 +237,8 @@ router.post('/sentiment', function (req: any, res: any, next: any) {
     if (_validSentiment.includes(sentiment)) {
         // Then increment the provided sentiment
         console.log(`Incrementing ${sentiment}`);
+        // The following code works, but the TypeScript compiler doesn't like it
+        // @ts-ignore
         _userSentiment[sentiment] = _userSentiment[sentiment] + 1;
         res.sendStatus(201);
     } else {
