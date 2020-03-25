@@ -34,7 +34,7 @@
   <script>
     // does the browser support service workers?
     if ('serviceWorker' in navigator) {
-      // fires when the service worker is reacdy
+      // fires when the service worker is ready
       navigator.serviceWorker.ready.then(reg => {
         // we have an active service worker working for us
         console.log(`Service Worker ready (Scope: ${reg.scope})`);
