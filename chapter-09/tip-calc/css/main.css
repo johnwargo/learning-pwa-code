@@ -67,7 +67,7 @@ label {
 div#pageLogo {
   height: 50vw;
   width: 50vw;
-  background: url(img/tip-200.png) no-repeat;
+  background: url(/img/tip-200.png) no-repeat;
   background-size: contain;
   position:relative;
   left: 50%;
