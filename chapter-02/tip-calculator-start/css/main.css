@@ -6,8 +6,8 @@
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
  * Kroc Camen, and the H5BP dev community and team.
  */
- @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
-  
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap");
+
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
@@ -32,10 +32,9 @@ h1 {
 div.costArea {
   text-align: center;
   padding-bottom: 7vw;
-  
 }
-th {
 
+th {
   background-color: rgb(54, 83, 179);
   color: white;
   padding: 1.6vw 2vw;
@@ -46,16 +45,19 @@ td {
   border-bottom: 1pt solid #ddd;
 }
 
-th.rating, td.rating {
+th.rating,
+td.rating {
   text-align: left;
   padding-left: 2vw;
 }
 
-th.tip, td.tip {
+th.tip,
+td.tip {
   text-align: center;
 }
 
-th.amount, td.amount {
+th.amount,
+td.amount {
   text-align: right;
   padding-right: 2vw;
 }
@@ -69,10 +71,38 @@ div#pageLogo {
   width: 50vw;
   background: url(../img/tip-200.png) no-repeat;
   background-size: contain;
-  position:relative;
+  position: relative;
   left: 50%;
   margin-left: -25vw;
 }
+
+#installButtonDiv {
+  position: absolute;
+  top: 1vh;
+  right: 2vw;
+}
+
+button#installButton {
+  background-color: rgb(54, 83, 179);
+  color: white;
+  padding: 1.3vw 1.6vw;
+  font-size: 1.5vw;
+  cursor: pointer;
+  border-radius: 5px;
+  display:none;
+}
+
+button#installButton:hover {
+  background-color: #f87a03;
+}
+input {
+  border: 1pt solid #ccc;
+}
+
+/* button#installButton:active {
+  background-color: #f87a03;
+  color: #444;
+} */
 
 /*
  * Remove text-shadow in selection highlight:
@@ -265,6 +295,9 @@ textarea {
   html {
     font-size: 4.5vw;
   }
+  button#installButton {
+    font-size: 4.5vw;
+  }
 }
 
 @media screen and (min-width: 501px) {
@@ -273,12 +306,45 @@ textarea {
     width: 25vw;
     background: url(../img/tip-1200.png) no-repeat;
     background-size: contain;
-    position:relative;
+    position: relative;
     left: 50%;
     margin-left: -12.5vw;
   }
   body {
     margin: 5vw 10vw;
+  }
+  #installButtonDiv {
+    position: absolute;
+    top: 2vh;
+    right: 3vw;
+  }
+  button#installButton {
+    padding: 1.6vw 2vw;
+    font-size: 2vw;
+  }
+}
+@media screen and (orientation: landscape)  and (min-width: 820px) {
+  /* handles when screen is turned landscape ipad OR desktop */
+  body {
+    font-size: 2vh;
+  } 
+  th {
+    padding: 1.6vh 2vh;
+  }
+  h1 {
+    margin: 0 0 5vh;
+  }
+  div#pageLogo {
+    height: 25vh;
+    width: 25vh;
+    margin-left: -12.5vh;
+  }
+  div.costArea {
+    padding-bottom: 7vh;
+  }
+  button#installButton {
+    padding: 1.6vh 2vh;
+    font-size: 2vh;
   }
 }
 
@@ -320,7 +386,8 @@ textarea {
     white-space: pre-wrap !important;
   }
 
-  pre, blockquote {
+  pre,
+  blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
@@ -339,12 +406,15 @@ textarea {
     page-break-inside: avoid;
   }
 
-  p, h2, h3 {
+  p,
+  h2,
+  h3 {
     orphans: 3;
     widows: 3;
   }
 
-  h2, h3 {
+  h2,
+  h3 {
     page-break-after: avoid;
   }
 }
