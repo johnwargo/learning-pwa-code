@@ -1,0 +1,90 @@
+<!doctype html>
+
+<html lang='en'>
+
+<head>
+    <title>PWA News</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta name="description" content="News and web sites covering Progressive Web Apps (PWA)">
+    <meta name="keywords" content="PWA, Progressive Web Apps, PWA News">
+    <link rel="manifest" href="app.webmanifest">
+
+    <!-- created with https://www.favicon-generator.org/ -->
+    <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png">
+
+    <link rel='stylesheet' type='text/css' href='css/custom.css'>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+</head>
+
+<body>
+    <header>
+        <div id='installButtonDiv'>
+            <button id='installButton'>Install</button>
+        </div>
+        <h1 id="title">PWA News</h1>
+        <div id="menu-toggle">
+            <div id="hamburger"></div>
+        </div>
+        <div id="navigation">
+            <ul>
+                <li class="nav-link"><a href="index.html">Home</a></li>
+                <li class="nav-link"><a href="about.html">About</a></li>
+                <li class="nav-link"><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </div>
+    </header>
+    <section id='newsIntroText'>
+        <!-- <h2>Recent News</h2> -->
+        <p class='introContent'><strong>Industry News for Progressive Web Apps (PWA).</strong>This is a simple news site
+            displaying links and summary information for public articles on the topic. The site uses Microsoft's Bing
+            Search API to search for articles using the keyword 'PWA', and renders the top 20 articles below. This site
+            is one of the sample apps from <em><a href="https://pwalearn.com" target="_blank">Learning Progressive Web
+                    Apps</a></em>; it's a PWA and supports installation, data caching, and more. Check out the book for
+            more information.</p>
+        <p><strong>Updated:</strong> <span id="lastUpdated">Unknown</span> <span id="updatedAgo"></span></p>
+    </section>
+    <section class='mainBody' id='newsContent' class="newsContent">
+        <!-- this is where the main body content goes -->
+        <article>No Data Available</article>
+    </section>
+    <section id='cacheNote'>
+        <p><strong>Note:</strong> The server process caches news items for 15 minutes, so the Last Updated date/time
+            won't update with every request. I did this to keep from overloading the Bing Search API Free Tier.</p>
+        <a href="https://azure.microsoft.com/en-us/services/cognitive-services/bing-web-search-api/" class="bingLink"
+            target="_blank">
+            <img src="img/bing-logo.png" alt="This content is powered by Microsoft Bing"
+                title="This content is powered by Microsoft Bing">
+        </a>
+    </section>
+
+    <footer>
+        <article id="presenceDisplay">
+            <div class="connection">Presence: <span class="value" id="presenceValue"></span></div>
+            <div class="source">Source: <span class="value" id="sourceValue"></span></div>
+            <div class="data">Data State: <span class="value" id="dataStateValue"></span></div>
+            </div>
+        </article>
+    </footer>    
+    <!-- setup some shared housekeeping stuff on the page -->
+    <script src='js/utils.js'></script>
+    <!-- load the main logic for this page -->
+    <script src='js/index.js'></script>
+</body>
+
+</html>

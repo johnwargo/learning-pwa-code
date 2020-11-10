@@ -1,0 +1,42 @@
+{
+  "name": "pwa-news-server",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "tsc": "tsc",
+    "dev": "ts-node-dev --respawn --transpile-only ./bin/www",
+    "prod": "tsc && node .bin/www"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    }
+  },
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/express": "^4.17.0",
+    "@types/node": "^13.7.1",
+    "axios": "^0.21.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "helmet": "^3.15.0",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "ms-rest-azure": "^2.6.0",
+    "pug": "2.0.0-beta11",
+    "typescript": "^3.4.5"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "ts-node-dev": "^1.0.0"
+  }
+}

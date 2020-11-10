@@ -1,0 +1,509 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,300,600");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Raleway, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+body section.mainBody {
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  padding: 125px 8vw 4rem 8vw;
+  line-height: 1.4;
+  font-size: 1.2rem;
+}
+body section#newsIntroText {
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  padding: 9rem 9vw 0;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+body section.mainBody#newsContent {
+  margin-right: 2.5vw;
+  padding-bottom: 7rem;
+  padding-top: 0;
+}
+body section.mainBody#newsContent .introText {
+  font-style: italic;
+  font-size: 0.9em;
+  padding-top: 12px;
+  border-bottom: 1pt dashed #c09f80;
+  padding-bottom: 20px;
+}
+body section.mainBody#aboutContent {
+  padding-top: 145px;
+}
+strong {
+  color: #76323f;
+}
+header {
+  background: #c09f80;
+  padding: 1px 0 0 0;
+  border-bottom: 1pt solid #ddd;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
+header h1 {
+  font-weight: 600;
+  margin-left: 2rem;
+}
+header h1 span {
+  font-weight: 100;
+}
+header #navigation {
+  width: 100%;
+  text-align: center;
+  background: #444;
+}
+header #navigation ul {
+  display: inline-block;
+  margin-top: 0;
+}
+header #navigation li {
+  list-style: none;
+  float: left;
+  margin-right: 3rem;
+  position: relative;
+  top: 10px;
+}
+header #navigation li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: 100;
+  padding: 0.5rem 1rem;
+}
+header #navigation li a:hover,
+header #navigation li a:active {
+  color: #fff;
+  background: #666;
+  font-weight: 300;
+}
+section {
+  padding: 0.5rem 2rem;
+}
+section#loadingIndicator {
+  padding: 0;
+}
+footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  background: #76323f;
+  color: white;
+  z-index: 10;
+}
+.loader {
+  position: fixed;
+  top: calc(50% - 80px);
+  left: calc(50% - 80px);
+}
+#newsIntroText .introContent {
+  font-style: italic;
+}
+ul#newsContent {
+  list-style: none;
+  margin-left: -30px;
+}
+#newsContent .sectionHead {
+  font-weight: 600;
+  margin: 0;
+  padding-top: 10px;
+}
+#newsContent .sectionHead:first-of-type {
+  border-bottom: 1pt solid #c09f80;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+#newsContent .sectionHead .mainHead {
+  color: #7f5935;
+}
+#newsContent ul.items {
+  list-style: none;
+  font-weight: 100;
+}
+#newsContent ul.items li {
+  padding-top: 1rem;
+  border-top: 1pt solid #eee;
+}
+#newsContent ul.items li img {
+  float: left;
+  position: relative;
+  top: 1.5rem;
+  z-index: 1;
+  width: 18vw;
+  max-width: 100px;
+}
+#newsContent ul.items h4 {
+  font-weight: 600;
+  font-size: 0.95em;
+  margin-bottom: -10px;
+}
+#newsContent ul.items h4 a {
+  text-decoration: none;
+  color: #76323f;
+}
+#newsContent ul.items h4 a:hover,
+#newsContent ul.items h4 a:active {
+  color: #999;
+  text-decoration: underline;
+}
+#newsContent ul.items.webPages h4 {
+  font-weight: 100;
+  font-size: 1em;
+}
+#newsContent ul.items.webPages h4 a {
+  text-decoration: none;
+  color: #999;
+}
+#newsContent ul.items.webPages h4 a:hover,
+#newsContent ul.items.webPages h4 a:active {
+  color: #76323f;
+  text-decoration: underline;
+}
+#newsContent ul.items .publishInfo,
+#newsContent ul.items .providerInfo {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0;
+}
+#newsContent ul.items .providerInfo {
+  margin-bottom: 1.5rem;
+}
+#newsContent ul.items .publishInfo .label,
+#newsContent ul.items .providerInfo .label {
+  display: inline-block;
+  width: 90px;
+}
+#newsContent ul.items .publishInfo .text,
+#newsContent ul.items .providerInfo .text {
+  font-weight: 500;
+  color: #999;
+}
+#newsContent li.newsItem {
+  display: grid;
+  grid-column-gap: 1.2rem;
+  grid-template-columns: 100px 1fr;
+}
+
+#feedbackContent h1 {
+  font-size: 1.5rem;
+}
+#feedbackContent #canvas-holder {
+  width: 60%;
+  max-width: 800px;
+  position: relative;
+  left: 60%;
+  margin-left: -25%;
+}
+table#chartValues {
+  position: absolute;
+  bottom: 30%;
+  margin-left: -58%;
+  width: 250px;
+}
+table#chartValues th,
+table#chartValues td {
+  padding: 5px 0;
+}
+table#chartValues th {
+  text-align: left;
+  color: #76323f;
+}
+a.bingLink {
+  position: absolute;
+  right: 5vw;
+}
+/* .online a.bingLink {
+  position: absolute;
+  right: 5vw;
+} */
+/* .offline a.bingLink {
+  display: none;
+} */
+.lastUpdated {
+  font-size: 0.85em;
+  font-style: italic;
+  padding-bottom: 10px;
+}
+.online .lastUpdated {
+  display: none;
+}
+#offlineNotification p {
+  font-size: 2em;
+  color: #999;
+  text-align: center;
+  width: 50%;
+  position: relative;
+  left: 50%;
+  margin-left: -25%;
+  margin-top: 30%;
+}
+#presenceDisplay {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  width: 100%;
+  margin: 1rem 0;
+  position: relative;
+}
+#presenceDisplay .stateInfo div {
+  float: left;
+  margin-right: 1rem;
+  font-size: 0.8rem;
+  max-width: 150px;
+  position: relative;
+  bottom: 8px;
+  left: 6vw;
+  padding: 2px 0;
+}
+#presenceDisplay .stateInfo div .value {
+  font-weight: 700;
+}
+.offline #presenceDisplay .connection #presenceValue {
+  color: red;
+  font-weight: 600;
+}
+.online #presenceDisplay .connection #presenceValue {
+  color: mediumseagreen;
+  font-weight: 600;
+}
+#presenceDisplay .source #sourceValue {
+  color: mediumseagreen;
+  font-weight: 600;
+}
+.localhost #presenceDisplay .source #sourceValue {
+  color: red;
+  font-weight: 600;
+}
+section#cacheNote {
+  position: relative;
+  bottom: 7vh;
+  font-size: 0.8rem;
+  margin: 0 3rem;
+  line-height: 1.4;
+  padding-bottom: 19vh;
+}
+#installButtonDiv {
+  position: absolute;
+  top: 2vh;
+  right: 2vw;
+  z-index: 5;
+}
+
+button#installButton {
+  background-color: rgb(54, 83, 179);
+  color: white;
+  padding: 1.3vw 1.6vw;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  display: none;
+}
+
+button#installButton:hover {
+  background-color: #f87a03;
+}
+@media (max-width: 768px) {
+  body section.mainBody#aboutContent {
+    padding-top: 110px;
+  }
+  body section#newsIntroText {
+    padding: 6rem 2.5rem 0;
+    font-size: 1em;
+    line-height: 1.4;
+  }
+  header {
+    position: fixed;
+    height: 4rem;
+    width: 100%;
+    padding: 0.1rem 1.5rem 1rem;
+    z-index: 10;
+  }
+  header h1 {
+    margin-left: 0.5rem;
+  }
+  header #navigation {
+    position: absolute;
+    z-index: 1000;
+    background: #eee;
+    top: calc(3rem - 5px);
+    right: 3rem;
+    border: 1pt solid #ccc;
+    border-right: none;
+    border-top-color: #eee;
+    box-shadow: -13px 13px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+    clip-path: circle(0px at top right);
+    transition: all ease-in-out 500ms;
+    width: 12rem;
+    text-align: left;
+    /* display:none; /* only if the menu won't hide */
+  }
+  #mobileHeadDiv {
+    background: #f8f8f8;
+    width: 100%;
+    height: 85px;
+    border-bottom: 1pt solid #e7e7e7;
+  }
+  header #navigation ul {
+    margin: 0;
+    padding: 0;
+  }
+  header #navigation li {
+    position: relative;
+    float: none;
+    width: 7rem;
+    text-align: left;
+    padding: 0.5rem 1rem;
+    top: 0;
+    border-bottom: 1pt solid #ddd;
+    width: 100%;
+  }
+  header #navigation li:hover {
+    background: #76323f;
+  }
+  header #navigation li:last-child {
+    border-bottom: none;
+  }
+  header #navigation li a {
+    border-right: none;
+    padding: 0.5rem 1rem;
+    font-size: 26px;
+    cursor: pointer;
+    color: #666;
+    width: 100%;
+  }
+  header #navigation li a:hover {
+    background: transparent;
+    color: #d7cec7;
+  }
+  #navigation.mobile-menu--open {
+    background: #eee;
+    clip-path: circle(160% at top right);
+    transition: all ease-in-out 500ms;
+    /* display:block; /* only if the menu won't hide. also see above */
+  }
+  #menu-toggle {
+    padding: 1.5rem 1rem;
+    position: absolute;
+    right: 3.5rem;
+    top: 1rem;
+    cursor: pointer;
+  }
+  #menu-toggle #hamburger,
+  #menu-toggle #hamburger::before,
+  #menu-toggle #hamburger::after {
+    content: "";
+    display: block;
+    background: #d7cec7;
+    height: 4px;
+    width: 2.5rem;
+    border-radius: 4px;
+    transition: all ease-in-out 300ms;
+  }
+  #menu-toggle #hamburger::before {
+    transform: translateY(-12px);
+  }
+  #menu-toggle #hamburger::after {
+    transform: translateY(8px);
+  }
+  #menu-toggle.open #hamburger {
+    transform: rotate(45deg);
+  }
+  #menu-toggle.open #hamburger::before {
+    opacity: 0;
+  }
+  #menu-toggle.open #hamburger::after {
+    transform: translateY(-4px) rotate(-90deg);
+  }
+  body section.mainBody {
+    padding-top: 5rem;
+    padding-bottom: 6rem;
+  }
+  footer a {
+    font-size: 20px;
+  }
+  #feedbackContent #canvas-holder {
+    width: 70%;
+    position: relative;
+    left: 50%;
+    margin-left: -35%;
+  }
+  table#chartValues {
+    position: relative;
+    bottom: 30%;
+    margin-top: 7vw;
+    left: 50%;
+    margin-left: -110px;
+  }
+  table#chartValues th,
+  table#chartValues td {
+    padding: 3px 0;
+  }
+  #newsContent li.newsItem {
+    grid-template-columns: 1fr 4fr;
+  }
+  #installButtonDiv {
+    position: absolute;
+    top: 1.4rem;
+    right: 8rem;
+    z-index: 5;
+  }
+}
+@media (max-width: 720px) {
+  #presenceDisplay {
+    display: block;
+    padding-left: 2vw;
+  }
+}
+@media (max-width: 450px) {
+  body section.mainBody {
+    font-size: 1rem;
+  }
+  header h1 {
+    color: transparent;
+  }
+  header h1::after {
+    position: absolute;
+    content: "PWA";
+    color: black;
+    left: 1.5rem;
+    top: 1.45rem;
+  }
+  #newsContent ul.items {
+    margin-left: -40px;
+  }
+  table#chartValues th,
+  table#chartValues td {
+    padding: 1px 0;
+  }
+  #offlineNotification p {
+    font-size: 2em;
+    color: #999;
+    text-align: center;
+    width: 70%;
+    position: relative;
+    left: 50%;
+    margin-left: -35%;
+    margin-top: 50%;
+  }
+  #newsContent ul.items .providerInfo .label,
+  #newsContent ul.items .publishInfo .label {
+    display: none;
+  }
+}
+@media screen and (min-device-aspect-ratio: 8/5) {
+  #offlineNotification p {
+    margin-top: 10%;
+  }
+}
+@media screen and (max-device-aspect-ratio: 1024/768) {
+  #offlineNotification p {
+    margin-top: 20%;
+  }
+}

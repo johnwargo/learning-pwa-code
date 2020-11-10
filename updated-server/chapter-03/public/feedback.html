@@ -1,0 +1,82 @@
+<!doctype html>
+
+<html lang='en'>
+
+<head>
+    <title>PWA News</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' type='text/css' href='css/custom.css'>
+</head>
+
+<body>
+    <header>
+        <h1>PWA News</h1>
+        <div id="menu-toggle">
+            <div id="hamburger"></div>
+        </div>
+        <div id="navigation">
+            <ul>
+                <li class="nav-link"><a href="index.html">Home</a></li>
+                <li class="nav-link"><a href="about.html">About</a></li>
+                <li class="nav-link"><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </div>
+    </header>
+    <section class='mainBody' id='feedbackContent'>
+        <article>
+            <h1>User Sentiment</h1>
+            <p>This page displays visitor sentiment, feedback we've received from visitors over time (actually, I'm
+                lying, the server generates a bunch of data when it launches for the first time. Before I'm done, I'll
+                add a form here you can use to add your feelings to the graph.</p>
+            <div id="canvas-holder">
+                <canvas id="myChart" width="500" height="500"></canvas>
+                <table id='chartValues'>
+                    <tr>
+                        <th>Rating</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>Amazing</td>
+                        <td id="valAmazing">0</td>
+                    </tr>
+                    <tr>
+                        <td>Awesome</td>
+                        <td id="valAwesome">0</td>
+                    </tr>
+                    <tr>
+                        <td>Fantastic</td>
+                        <td id="valFantastic">0</td>
+                    </tr>
+                    <tr>
+                        <td>Great</td>
+                        <td id="valGreat">0</td>
+                    </tr>
+                    <tr>
+                        <td>OK</td>
+                        <td id="valOk">0</td>
+                    </tr>
+                    <tr>
+                        <td>Perfect</td>
+                        <td id="valPerfect">0</td>
+                    </tr>
+                </table>
+            </div>
+        </article>
+    </section>
+    <footer>
+        <article id="presenceDisplay">
+            <div class="connection">Presence: <span class="value" id="presenceValue"></span></div>
+            <div class="source">Source: <span class="value" id="sourceValue"></span></div>
+            </div>
+        </article>
+    </footer>
+    <!-- load the chart library we're using -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <!-- setup some shared housekeeping stuff on the page -->
+    <script src='js/utils.js'></script>
+    <!-- load the main logic for this page -->
+    <script src='js/feedback.js'></script>
+</body>
+
+</html>

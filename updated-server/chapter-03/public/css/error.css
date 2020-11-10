@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 20vh;
+}
+div#errorMsg {
+  width: 50%;
+  position: relative;
+  left: 25%;
+}
+.snarky {
+  font-style: italic;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.errorImg {
+  width: 80%;
+}
+@media screen and (min-device-aspect-ratio: 8/5) {
+  body {
+    margin-top: 10vh;
+  }
+}

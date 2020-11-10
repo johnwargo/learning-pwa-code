@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    title(PWA News Error)
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/css/custom.css')
+    //- link(rel='stylesheet', href='/css/error.css')
+  body
+    header
+      h1 PWA News
+      div(id='menu-toggle')
+        div(id='hamburger')
+      div(id='navigation')
+        ul
+          li(class='nav-link') 
+            a(href='index.html') Home
+          li(class='nav-link') 
+            a(href='about.html') About
+          li(class='nav-link') 
+            a(href='feedback.html') Feedback
+    section(class='mainBody' id='aboutContent')
+      div(id='errorMsg')
+        h1 Navigation Error
+        hr
+        p(class="snarky") Well, that didn't work.
+        p The page you requested (#{target}) doesn't exist on this server, sorry. What were you thinking?
+        p 
+          | Perhaps you'd be interested in buying a copy of my 
+          | <a href="https://pwalearn.com" target="_blank">Learning Progressive Web Apps</a>
+          | book. This is the book's sample web app after all, you can learn all about coding the app through the book.
+    //- pre #{error.stack}
+    footer
+      article(id='presenceDisplay')
+
