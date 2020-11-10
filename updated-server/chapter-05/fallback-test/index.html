@@ -1,0 +1,24 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Background Sync Fallback Tester</title>
+  <meta name="description" content="A simple app for testing background sync fallback">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/normalize.css">  
+  <script>
+    navigator.serviceWorker.register("./sw.js");
+    navigator.serviceWorker.ready.then(reg => {
+      return reg.sync.register('testSync');
+    });
+  </script>
+</head>
+
+<body>
+  <h1>Background Sync Fallback Tester</h1>
+  <p>This web page tests and validates the operation of the Service Worker Background Sync Exponential Backoff process.
+    Open the browser's developer tools to the console window and watch what happens.
+  </p>
+</body>
+
+</html>
