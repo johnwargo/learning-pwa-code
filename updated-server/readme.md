@@ -18,6 +18,8 @@ If you didn't create your Bing Search API keys before October 29, 2020, then you
 
 In Chapter 3, where the book tells readers to create a new API key using this link:  [https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7); that no longer works. Readers must instead use [https://portal.azure.com/#create/Microsoft.BingSearch](https://portal.azure.com/#create/Microsoft.BingSearch) to create a new API key to use with the book's code.
 
+To help with the process, I added a Word and PDF versions of printable instructions (`updated-bing-api-instructions`) to this folder so you can print them out and stick them inside the book at page 50 for future reference.
+
 The server code used by the book requires changes to work with the new API keys, so if you switch to the new search API keys, you must also switch to using the server code located in this folder of the repository.  
 
 For Chapters 3 through 5, where the book tells you to use the chapter's code in the repo, for example `\learning-pwa-code\chapter-##\`, you must pull the code from a different folder; the code is now in the repository's `updated-server` folder (`\learning-pwa-code\updated-server\chapter-##\`).
